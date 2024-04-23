@@ -1,0 +1,32 @@
+Print Subsequences - Code Studio
+Approach - Using Recursion 
+
+Code : 
+void PrintSequence(vector<string>& answer , int i , string temp , string s , int n){
+    if(i == n){
+        answer.push_back(temp);
+        return;
+    }
+
+    temp.push_back(s[i]);
+
+    PrintSequence(answer, i + 1, temp, s,  n);
+
+    temp.pop_back();
+
+    PrintSequence(answer, i + 1, temp, s,  n);
+}
+
+
+vector<string> generateSubsequences(string s)
+{
+    // Write your code here.
+    vector<string> answer;
+    string temp = "";
+    int index = 0;
+   int n = s.length();
+
+   PrintSequence(answer, index,  temp,  s,  n);
+
+   return answer;
+}
