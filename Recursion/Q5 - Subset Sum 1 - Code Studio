@@ -1,0 +1,28 @@
+https://www.naukri.com/code360/problems/subset-sum_3843086
+
+Approach - Recursion 
+
+
+Code:
+void helper(int index, vector<int>& answer , vector<int> &num , int sum){
+	if(index >= num.size()){
+		answer.push_back(sum);
+		return;
+	}
+
+	helper(index + 1, answer, num,  sum + num[index]);
+
+	helper(index + 1 , answer , num , sum);
+
+	
+}
+
+vector<int> subsetSum(vector<int> &num){
+	// Write your code here.	
+	vector<int> answer;
+	int index = 0;
+	int sum = 0;
+	helper(index , answer , num , sum);
+	sort(answer.begin() , answer.end());
+	return answer;
+}
