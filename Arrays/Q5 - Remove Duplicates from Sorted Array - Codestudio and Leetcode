@@ -1,0 +1,30 @@
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+
+Approach : Explanation of the Approach
+The function implements a two-pointer technique:
+
+Pointer i: This pointer is used to mark the end of the part of the array that contains unique elements (no duplicates). Initially, it is set to 0, pointing at the first element, which is inherently unique because it's the first of its kind we're encountering as we traverse from the beginning.
+Pointer j: This pointer is used to explore the array, starting from the second element (index 1). It moves through the entire array.
+Logic of the Function
+Traverse through the array: The for loop starts with j at 1 and goes till the end of the array. For each element pointed by j, the algorithm checks if it is different from the element at pointer i.
+Handling Non-Duplicate Elements: If the element at j is different from that at i, it means nums[j] is not a duplicate (relative to nums[i]). In this case:
+The element just after the last discovered unique element (i.e., nums[i + 1]) is set to nums[j].
+The i pointer is incremented, indicating that the length of the unique part of the array has increased.
+Ending the Traversal: Once j has gone through the entire array, the unique elements have been shifted to the beginning of the array up to index i.
+Return Value: The function returns i + 1, which is the length of the array consisting of only unique elements. The +1 accounts for the zero-based indexing of C++ arrays.
+
+
+Code : 
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int i = 0;
+        for(int j = 1 ; j < nums.size() ; j++){
+            if(nums[i] != nums[j]){
+                nums[i+1] = nums[j];
+                i++;
+            }
+        }
+        return i+1;
+    }
+};
