@@ -1,0 +1,17 @@
+https://www.naukri.com/code360/problems/superior-elements_6783446?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=PROBLEM
+
+Code :
+vector<int> superiorElements(vector<int>&a) {
+    // Write your code here.
+    int n = a.size();
+    int maxi = a[n-1];
+    vector<int> ans;
+    ans.push_back(maxi);
+    for(int i = n-2 ; i >=0 ; i--){
+        if(a[i] > maxi){
+            maxi = a[i];
+            ans.push_back(maxi);
+        }
+    }
+    return ans;
+}
