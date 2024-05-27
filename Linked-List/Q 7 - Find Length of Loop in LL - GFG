@@ -1,0 +1,43 @@
+https://www.geeksforgeeks.org/problems/find-length-of-loop/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=find-length-of-loop
+
+Code : 
+
+
+/*
+
+struct Node {
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+
+//Function to find the length of a loop in the linked list.
+int countNodesinLoop(struct Node *head)
+{
+    // Code here
+    struct Node *fast = head;
+    struct Node *slow = head;
+    
+    while(fast != NULL && fast -> next != NULL){
+        fast = fast -> next -> next;
+        slow = slow -> next;
+        
+        if(fast == slow){
+            int cnt = 1;
+            fast = fast -> next;
+            
+            while(fast != slow){
+                cnt++;
+                fast = fast -> next;
+            }
+            return cnt;
+        }
+    }
+    return 0;
+    
+}
