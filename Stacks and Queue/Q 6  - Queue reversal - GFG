@@ -1,0 +1,30 @@
+https://www.geeksforgeeks.org/problems/queue-reversal/1
+
+Approach - recursion
+
+Code :
+class Solution
+{
+    public:
+    void reversal(queue<int> &q){
+        if(q.empty()){
+            return;
+        }
+        
+        int ele = q.front();
+        
+        q.pop();
+        
+        reversal(q);
+        
+        q.push(ele);
+    }
+    queue<int> rev(queue<int> q)
+    {
+        // add code here.
+        
+        reversal(q);
+        return q;
+     
+    }
+};
