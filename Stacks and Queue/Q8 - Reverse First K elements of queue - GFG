@@ -1,0 +1,40 @@
+https://www.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1
+
+Code :
+My approach :
+   void reversal(queue<int> &q){
+        if(q.empty()){
+            return;
+        }
+        
+        int ele = q.front();
+        
+        q.pop();
+        
+        reversal(q);
+        
+        q.push(ele);
+    }
+    
+    
+    queue<int> modifyQueue(queue<int> q, int k) {
+        // add code here.
+        vector<int> temp(k , 0);
+        
+       
+        for( int i = 0; i < k  ; i++){
+            temp[i] = q.front();
+            q.pop();
+        }
+        
+        reversal(q);
+        
+        for( int i = 0; i < k  ; i++){
+            q.push(temp[i]);
+        }
+        
+        reversal(q);
+        
+        return q;
+    }
+};
