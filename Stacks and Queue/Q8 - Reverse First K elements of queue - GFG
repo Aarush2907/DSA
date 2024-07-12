@@ -38,3 +38,35 @@ My approach :
         return q;
     }
 };
+
+//better soln
+
+ queue<int> modifyQueue(queue<int> q, int k) {
+        // add code here.
+        
+        stack<int> st;
+        
+        int cnt = 0;
+        while(cnt < k){
+            int ele  = q.front();
+            q.pop();
+            st.push(ele);
+            
+            cnt++;
+        }
+        
+        while(!st.empty()){
+            q.push(st.top());
+            st.pop();
+        }
+        
+        int t = q.size()  - k;
+        
+        while(t--){
+            int frontele = q.front();
+            q.pop();
+            q.push(frontele);
+        }
+        
+        return q;
+    }
